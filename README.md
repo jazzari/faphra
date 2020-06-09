@@ -1,7 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Description:
+
+Tweeter-like App where people can post their “favorite phrases”,
+ see other people phrases and follow users.
+
+
+
 
 Things you may want to cover:
 
