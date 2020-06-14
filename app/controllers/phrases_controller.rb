@@ -4,6 +4,10 @@ class PhrasesController < ApplicationController
 		@phrases = Phrase.all.order("created_at DESC")
 	end
 
+	def show
+		@phrase = Phrase.find(params[:id])
+	end
+
 	def new
 		@phrase = Phrase.new
 	end
