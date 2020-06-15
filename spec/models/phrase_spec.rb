@@ -11,9 +11,9 @@ RSpec.describe Phrase, :type => :model do
 		it "is not valid without a body" do 
 			invalid_phrase = Phrase.new(body: nil)
 			expect(invalid_phrase).to_not be_valid 
+			expect(invalid_phrase.errors.messages[:body]).to include("can't be blank")
 		end
 
     end
-
 
 end
