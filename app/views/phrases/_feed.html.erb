@@ -1,7 +1,10 @@
 <ul>
 	<% @phrases.each do |phrase| %>
-      <div class="card">
-	  	<h5 class="card-header text-center">Author</h5>
+      <div class="card shadow p-3 mb-5 bg-white rounded">
+	  	<p class="image">
+	  		<%= gravatar_image_tag('example@example.com', :alt => 'Example image') %>
+	  	</p>
+	  	<h5>Author</h5>
 	  	  <div class="card-body">
 			<blockquote class="blockquote text-center">
 				<h4><%= phrase.body %></h4>
