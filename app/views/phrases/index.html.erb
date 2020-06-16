@@ -1,17 +1,11 @@
 <%= render 'shared/page_title', title: "favorite phrases" %>
 
-<ul>
-	<% @phrases.each do |phrase| %>
-	  <div class="card">
-	  	<h5 class="card-header text-center">Author</h5>
-	  	  <div class="card-body">
-			<blockquote class="blockquote text-center">
-				<h4><%= phrase.body %></h4>
-			</blockquote>
-		  </div>
-			<footer class="blockquote-footer text-center">
-					Created <%= time_ago_in_words(phrase.created_at) %> ago
-			</footer>
-	  </div>
-	<% end %>
-</ul>	
+<div class="row">
+  <div class="col-sm-8">	
+	<%= render 'feed' %>
+  </div>
+
+  <div class="col-sm-4">	
+	<%= render 'trends' %>
+  </div>
+</div>
