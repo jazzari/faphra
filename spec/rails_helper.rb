@@ -1,5 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'capybara/rspec'
 
 
 ENV['RAILS_ENV'] ||= 'test'
@@ -69,10 +70,27 @@ RSpec.configure do |config|
   config.include Capybara::DSL
 
   Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
   end
-end
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+  
 
 end

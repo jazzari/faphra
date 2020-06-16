@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 describe PhrasesController do 
 
   describe 'GET phrases#index' do 
@@ -26,6 +27,34 @@ describe PhrasesController do
 	  		expect(Phrase.recent.first['id']).to eq(new_phrase.id)
 	  		expect(Phrase.recent.last['id']).to eq(old_phrase.id)
 	  	end
+
+	end
+
+	describe 'GET phrases#show' do 
+		let(:phrase) { create :phrase }
+		subject { get :show, params: { id: phrase.id } }
+
+		it "should render show template" do 
+			expect(subject).to render_template('show')
+		end
+
+		it "should return proper content" do 
+			subject
+
+			expect(response.body).to match(/My favorite phrase 6/)
+		end
+
+	end
+
+	describe 'POST phrase#create' do 
+
+		it "should create a new phrase" do 
+			expect{
+       		post :create, params: { :phrase => { :body => 'My favorite phrase' }
+            } }.to change(Phrase, :count).by 1
+			
+			expect(flash[:notice]).to eq("Faphra was successfully created")
+		end
 
 	end
 

@@ -1,3 +1,17 @@
+GIT
+  remote: https://github.com/rspec/rspec-rails
+  revision: 5e1ebec4b2e74de68566919c91b8ad8c1000e4f8
+  branch: 4-0-maintenance
+  specs:
+    rspec-rails (4.0.1)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (~> 3.9)
+      rspec-expectations (~> 3.9)
+      rspec-mocks (~> 3.9)
+      rspec-support (~> 3.9)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -74,6 +88,7 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    database_cleaner (1.8.5)
     diff-lcs (1.3)
     erubi (1.9.0)
     factory_bot (5.2.0)
@@ -159,14 +174,6 @@ GEM
     rspec-mocks (3.9.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
-    rspec-rails (4.0.1)
-      actionpack (>= 4.2)
-      activesupport (>= 4.2)
-      railties (>= 4.2)
-      rspec-core (~> 3.9)
-      rspec-expectations (~> 3.9)
-      rspec-mocks (~> 3.9)
-      rspec-support (~> 3.9)
     rspec-support (3.9.3)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
@@ -234,6 +241,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  database_cleaner
   factory_bot_rails
   gravatar_image_tag (~> 1.2)
   jbuilder (~> 2.7)
@@ -241,7 +249,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.1)
   rails-controller-testing
-  rspec-rails (~> 4.0.0)
+  rspec-rails!
   sass-rails (>= 6)
   selenium-webdriver
   shoulda-matchers (~> 4.3)
