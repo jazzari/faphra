@@ -1,5 +1,6 @@
 class PhrasesController < ApplicationController
 	before_action :set_phrase, only: [:edit, :show, :update]
+	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
 		@phrases = Phrase.recent.all 
@@ -29,7 +30,6 @@ class PhrasesController < ApplicationController
 	end
 
 	def update
-
 		if @phrase.update(phrase_params)
 			flash[:success] = "Faphra was updated successfully!"
 			redirect_to phrase_path(@phrase)

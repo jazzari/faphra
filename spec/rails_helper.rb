@@ -67,6 +67,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # User for Capybara testing
   config.include Capybara::DSL
 
   Shoulda::Matchers.configure do |config|
@@ -92,5 +94,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
   
+  # Use for Devise testing
+  config.include Warden::Test::Helpers
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include ControllerHelpers, :type => :controller
 
 end
