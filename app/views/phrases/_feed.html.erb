@@ -1,19 +1,27 @@
 <ul>
 	<% @phrases.each do |phrase| %>
-      <div class="card shadow p-3 mb-5 bg-white rounded">
-	  	<p class="image">
-	  		<%= gravatar_image_tag('example@example.com', :alt => 'Example image') %>
-	  	</p>
-	  	<h5>Author</h5>
+       <div class="card border-light flex-row flex-wrap shadow p-3 mb-5 bg-white rounded">
+
+      	<div class="card-block d-flex">
+		  	<p class="image">
+		  		<%= gravatar_image_tag('example@example.com', :alt => 'Example image') %>
+		  	</p>
+	    </div>
+
+	  	<div class="">
+	  	  <div class="col-md-12">
+	  		<h5 class="card-title">Author</h5>
+	  		<h6 class="card-subtitle mb-2 text-muted">username</h6>
+	  	  </div>
+	  	</div>
+
 	  	  <div class="card-body">
-			<blockquote class="blockquote text-center">
-				<h4><%= phrase.body %></h4>
-			</blockquote>
+			<p class="card-text">
+				<em><%= phrase.body %></em>
+			</p>
 		  </div>
-			<footer class="blockquote-footer text-center">
-					Created <%= time_ago_in_words(phrase.created_at) %> ago
-			</footer>
-		  </div>
+
+		</div>
 
 	<% end %>
 </ul>	
