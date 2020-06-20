@@ -6,10 +6,10 @@
   	  <% if user != current_user %>
 	    
 	      <ul class="list-group list-group-flush">
-	      	<li class="card-block d-flex">
-	    	<p class="image mr-2">
-	    	<%= gravatar_image_tag(user.email, 
-								  size: 48, alt: user.name) %>
+	      	<li class="card-block d-flex list-group-item">
+	    	<p class="image mr-2 img-thumbnail">
+	    	<%= gravatar_image_tag(user.email, :gravatar => { :size => 40 },
+								   alt: user.name) %>
 			</p>
 			<p>
 			<strong><%= user.name %></strong>

@@ -1,17 +1,21 @@
 <ul>
-
-	<% @phrases.each do |phrase| %>
-       <div class="card rounded border-light flex-row flex-wrap shadow p-3 mb-4 ">
-
-	  	<% if user_signed_in? %>
+	<div class="card rounded border-light flex-row flex-wrap shadow p-3 mb-4 ">
+		<% if user_signed_in? %>
 	  	<div class="card-block d-flex">
-		  	<p class="image">
+		  	<p class="image ">
 		  		<%= gravatar_image_tag(current_user.email, 
 					   size: 64, alt: current_user.name) %>
 		  	</p>
 	    </div>
+	    <div class="col">
+	    	<%= render 'phrases/form' %>
+	    </div>
+	    
 	    <% end %>
-
+	</div>
+	    <p></p>
+	<% @phrases.each do |phrase| %>
+       <div class="card rounded border-light flex-row flex-wrap shadow p-3 mb-4 ">
 	  	<div class="">
 	  	  <div class="col-md-12">
 	  		<h5 class="card-title">Author</h5>

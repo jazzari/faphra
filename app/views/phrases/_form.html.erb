@@ -1,11 +1,12 @@
-<%= simple_form_for(@phrase) do |f| %>
-  <%= f.error_notification %>
+<%= form_for(Phrase.new, :url => { :action => "create" }) do |f| %>
 
-        <%= f.input :body, label: "Today favorite phrase", 
-        input_html: { class: "textarea" }, wrapper: false, 
-        label_html: { class: "label" },
-        placeholder: "Add your new favorite phrase...", autofocus: true %>
 
-        <%= f.button :submit, class: "button is-info" %>
+    <h5 class="card-title">Today's Favorite Phrase</h5>
+    <div class="col-md-12">
+   		 <%= f.text_area :body, class: "form-control",
+   		 placeholder: "Add your new favorite phrase...", autofocus: true %><br />
+    </div>
+
+    <%= f.submit "Create faphra", class: "btn ml-1 btn-primary btn-lg btn-xlarge" %>
 
 <% end %>
