@@ -12,7 +12,7 @@ class PhrasesController < ApplicationController
 	end
 
 	def new
-		@phrase = Phrase.new
+		@phrase = current_user.phrase.build
 	end
 
 	def edit
@@ -20,7 +20,7 @@ class PhrasesController < ApplicationController
 	end
 
 	def create
-		@phrase = Phrase.new(phrase_params)
+		@phrase = current_user.phrases.build(phrase_params)
 
 		if @phrase.save
 			flash[:success] = "Faphra was successfully created"
