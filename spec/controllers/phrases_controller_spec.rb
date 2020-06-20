@@ -31,6 +31,7 @@ describe PhrasesController do
 	end
 
 	describe 'GET phrases#show' do 
+
 		let(:phrase) { create :phrase }
 		subject { get :show, params: { id: phrase.id } }
 
