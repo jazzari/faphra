@@ -4,6 +4,7 @@ class PhrasesController < ApplicationController
 
 	def index
 		@phrases = Phrase.recent.all 
+		@users = User.all
 	end
 
 	def show

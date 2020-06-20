@@ -1,4 +1,4 @@
-<div class="card border-light shadow p-3 ">
+<div class="card rounded border-light shadow p-3 ">
 	<h5 class="card-header text-center mb-2">Profile</h5>
 
     <div class="card-block d-flex">
@@ -7,13 +7,25 @@
 					  size: 64, alt: current_user.name) %>
 	  	</p>
       <div class="col">
+        <p></p>
         <h5 class="card-title"><%= current_user.name %></h5>
         <h6 class="card-subtitle mb-2 text-muted"><%= current_user.username %></h6>
       </div>
     </div>
-
-  	<div class="col-md-12">
-
-
-  	</div>	
+    
+  <span class="border-bottom"></span>
+  <div class="row">
+    <div class="col text-secondary">
+      <h6>Faphras</h6>
+      <p class="text-info">12</p>
+    </div>
+    <div class="col text-secondary">
+      <h6>Following</h6>
+      <p class="text-info">7</p>
+    </div>
+    <div class="col text-secondary">
+      <h6>Followers</h6>
+      <p class="text-info">24</p>
+    </div>
+  </div>
 </div>

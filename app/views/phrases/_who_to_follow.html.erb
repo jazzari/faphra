@@ -1,0 +1,23 @@
+<div class="card rounded border-light shadow p-3 mb-5">	
+	<h5 class="card-header text-center">Who to Follow</h5>
+	<p></p>
+  
+  	<% @users.each do |user| %>
+  	  <% if user != current_user %>
+	    
+	      <ul class="list-group list-group-flush">
+	      	<li class="card-block d-flex">
+	    	<p class="image mr-2">
+	    	<%= gravatar_image_tag(user.email, 
+								  size: 48, alt: user.name) %>
+			</p>
+			<p>
+			<strong><%= user.name %></strong>
+			<small><%= user.username %></small>
+			</p>
+		</li>
+		</ul>
+	  <% end %>
+    <% end %>
+ 
+</div>
