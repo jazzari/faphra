@@ -1,12 +1,16 @@
 <ul>
+	
 	<% @phrases.each do |phrase| %>
        <div class="card border-light flex-row flex-wrap shadow p-3 mb-4 ">
 
-      	<div class="card-block d-flex">
+	  	<% if user_signed_in? %>
+	  	<div class="card-block d-flex">
 		  	<p class="image">
-		  		<%= gravatar_image_tag('example@example.com', :alt => 'Example image') %>
+		  		<%= gravatar_image_tag(current_user.email, 
+					   size: 64, alt: current_user.name) %>
 		  	</p>
 	    </div>
+	    <% end %>
 
 	  	<div class="">
 	  	  <div class="col-md-12">
