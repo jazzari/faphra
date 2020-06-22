@@ -10,6 +10,7 @@
 	    <div class="col">
 	    	<%= render 'phrases/form' %>
 	    </div>
+
 	    <% end %>
 	</div>
 	    <p></p>
@@ -33,8 +34,17 @@
 				<p class="card-text">
 					<em><%= phrase.body %></em>
 				</p>
+				<p><%= link_to icon("hand-thumbs-up", class: "text-secondary"), '#' %></p>
 			  </div>
 			</div>
+			<% if phrase.user.id == current_user.id %>
+			  <p class="d-flex justify-content-end">
+				<%= link_to "Show", phrase_path(phrase), class: "btn btn-outline-primary" %>
+				<%= link_to "Edit", edit_phrase_path(phrase), class: "btn btn-outline-primary" %>
+				<%= link_to "Delete", phrase_path(phrase), method: :delete, 
+				data: { confirm: "Are you sure?" }, class: "btn btn-outline-primary" %>
+			  </p>
+			<% end %>
 		</div>
 	<% end %>
 </ul>	

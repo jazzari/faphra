@@ -1,3 +1,7 @@
 <%= render 'shared/page_title', title: "editing faphra" %>
 
-<%= render 'form' %>
+<%= render 'form', phrase: @phrase %>
+
+<p class="d-flex justify-content-end">
+	<%= link_to "Cancel", phrases_path, class: "btn btn-primary mr-2" %>
+</p>

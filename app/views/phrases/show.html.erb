@@ -3,3 +3,8 @@
   <strong>Phrase:</strong>
   <%= @phrase.body %>
 </p>
+
+<p class="d-flex justify-content-end">
+	<%= link_to 'Edit', edit_phrase_path(@phrase), class: "btn btn-primary btn-lg mr-2" %>
+	<%= link_to 'Back', phrases_path, class: "btn btn-primary btn-lg mr-2" %>
+</p>
