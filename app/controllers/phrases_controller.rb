@@ -5,6 +5,7 @@ class PhrasesController < ApplicationController
 	def index
 		@phrases = Phrase.recent.all 
 		@users = User.all
+		@ownphrases = Phrase.where(:user_id => current_user.id)
 	end
 
 	def show
