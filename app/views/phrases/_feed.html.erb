@@ -25,7 +25,9 @@
 
 	        <div class="col">
 	  		  <h5 class="card-title"><%= phrase.user.name %></h5>
-	  		  <h6 class="card-subtitle mb-2 text-muted"><%= phrase.user.username %></h6>
+	  		  <h6 class="card-subtitle mb-2 text-muted">
+	  		  	<%= phrase.user.username %>
+	  		  	</h6>
 	  	     </div>
 	  	  </div>
 
@@ -34,15 +36,20 @@
 				<p class="card-text">
 					<em><%= phrase.body %></em>
 				</p>
-				<p><%= link_to icon("hand-thumbs-up", class: "text-secondary"), '#' %></p>
+				<p>
+					<%= link_to "Like", '#', class: "btn btn-outline-info btt-like btn-sm" %>
+				</p>
 			  </div>
 			</div>
 			<% if phrase.user.id == current_user.id %>
 			  <p class="d-flex justify-content-end">
-				<%= link_to "Show", phrase_path(phrase), class: "btn btn-outline-primary" %>
-				<%= link_to "Edit", edit_phrase_path(phrase), class: "btn btn-outline-primary" %>
+				<%= link_to "Show", phrase_path(phrase), 
+					class: "btn btn-outline-primary mr-2" %>
+				<%= link_to "Edit", edit_phrase_path(phrase), 
+					class: "btn btn-outline-primary mr-2" %>
 				<%= link_to "Delete", phrase_path(phrase), method: :delete, 
-				data: { confirm: "Are you sure?" }, class: "btn btn-outline-primary" %>
+					data: { confirm: "Are you sure?" }, 
+					class: "btn btn-outline-primary mr-2" %>
 			  </p>
 			<% end %>
 		</div>

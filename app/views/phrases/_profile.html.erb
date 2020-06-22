@@ -17,7 +17,7 @@
   <div class="row">
     <div class="col text-secondary">
       <h6>Faphras</h6>
-      <p class="text-info">12</p>
+      <p><%= link_to Phrase.count, phrases_path, class: "text-info" %></p>
     </div>
     <div class="col text-secondary">
       <h6>Following</h6>
