@@ -1,0 +1,62 @@
+<h2 class="text-center"><%= current_user.name %>'s Phrases</h2>
+<div class="border-bottom"></div>
+
+<div class="container">
+	<div class="card rounded border-light flex-row flex-wrap shadow p-3 mb-4 ">
+		<% if user_signed_in? %>
+	  	<div class="card-block d-flex">
+		  	<p class="image ">
+		  		<%= gravatar_image_tag(current_user.email, 
+					   size: 64, alt: current_user.name) %>
+		  	</p>
+	    </div>
+	    <div class="col">
+	    	<%= render 'phrases/form' %>
+	    </div>
+
+	    <% end %>
+	</div>
+	    <p></p>
+
+	<% @ownphrases.each do |phrase| %>
+       <div class="card rounded border-light shadow p-3 mb-4 ">
+	  	  <div class="card-block d-flex">
+		  	<p class="image ">
+		  		<%= gravatar_image_tag(phrase.user.email, 
+				  :gravatar => { :size => 40 }, alt: phrase.user.name) %>
+		  	</p>
+
+	        <div class="col">
+	  		  <h5 class="card-title"><%= phrase.user.name %></h5>
+	  		  <h6 class="card-subtitle mb-2 text-muted">
+	  		  	<%= phrase.user.username %>
+	  		  	</h6>
+	  	     </div>
+	  	  </div>
+
+		  	<div class="row">
+		  	  <div class="col">
+				<p class="card-text">
+					<em><%= phrase.body %></em>
+				</p>
+				<p>
+					<%= link_to "Like", '#', class: "btn btn-outline-info btt-like btn-sm" %>
+					<i class="fa fa-heart ml-2"></i> 2
+				</p>
+			  </div>
+			</div>
+			<% if phrase.user.id == current_user.id %>
+			  <p class="d-flex justify-content-end">
+				<%= link_to "Show", phrase_path(phrase), 
+					class: "btn btn-outline-primary mr-2" %>
+				<%= link_to "Edit", edit_phrase_path(phrase), 
+					class: "btn btn-outline-primary mr-2" %>
+				<%= link_to "Delete", phrase_path(phrase), method: :delete, 
+					data: { confirm: "Are you sure?" }, 
+					class: "btn btn-outline-primary mr-2" %>
+			  </p>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+
