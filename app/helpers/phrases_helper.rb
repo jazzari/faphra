@@ -8,8 +8,13 @@ module PhrasesHelper
 
 	def liked_phrase(phrase)
 		unless current_user.blank?
-			return 'fa-heart' if current_user.voted_for? phrase 
-			'fa-heart-o'
+			if current_user.voted_for? phrase
+				return link_to ' Unlike', unlike_phrase_path(phrase), remote: true,
+				id: "like_#{phrase.id}", class: 'btn btn-outline-primary btt-like btn fa fa-heart' 
+			else 
+				return link_to ' Like', like_phrase_path(phrase), remote: true,
+				id: "like_#{phrase.id}", class: 'btn btn-outline-primary btt-like btn fa fa-heart-o'
+			end				 
 		end
 
 	end
@@ -35,7 +40,7 @@ module PhrasesHelper
 		end
 
 		def like_plural(votes)
-			return ' like this' if votes.count >1
+			return ' like this' if votes.count > 1
 			' likes this'
 		end
 

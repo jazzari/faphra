@@ -58,6 +58,15 @@ class PhrasesController < ApplicationController
 		end
 	end
 
+	def unlike
+		if @phrase.unliked_by current_user
+			respond_to do |format|
+				format.html { redirect_to :back }
+				format.js
+			end
+		end
+	end
+
 
 
 	private

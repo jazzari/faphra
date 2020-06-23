@@ -39,9 +39,7 @@
 				<% if current_user.present? %>
 					<div class="row">
 						<div class="col-3">
-						  <%= link_to "Like", like_phrase_path(phrase.id), 
-						  remote: true, id: "like_#{phrase.id}", 
-						    class: "btn btn-outline-primary btt-like btn-sm fa #{liked_phrase phrase}" %>
+						  <%= liked_phrase phrase %>
 						</div>
 						<div class="col-4">
 							<%= render 'phrases/likes', phrase: phrase %>

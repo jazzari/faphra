@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :phrases do 
   	member do 
   		get 'like'
+  		get 'unlike'
   	end
   end
 
