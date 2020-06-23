@@ -5,7 +5,9 @@ class PhrasesController < ApplicationController
 	def index
 		@phrases = Phrase.recent.all 
 		@users = User.all
-		
+		unless current_user.blank?
+			@ownphrases = Phrase.recent.where(:user_id => current_user.id)
+		end
 	end
 
 	def show
