@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-	before_action :set_phrase, only: [:edit, :show, :update]
+	before_action :set_phrase, only: [:edit, :show, :update, :like]
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
@@ -47,6 +47,15 @@ class PhrasesController < ApplicationController
 		flash[:notice] = "Faphra was deleted successfully"
 
 		redirect_to phrases_path
+	end
+
+	def like 
+		if @phrase.liked_by current_user 
+			respond_to do |format|
+				format.html { redirect_to :back }
+				format.js
+			end
+		end
 	end
 
 

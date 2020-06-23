@@ -36,6 +36,9 @@ gem 'gravatar_image_tag', '~> 1.2'
 # for authentication 
 gem 'devise', '~> 4.7', '>= 4.7.2'
 
+# for like/unlike functionality
+gem 'acts_as_votable', '~> 0.12.1'
+
 
 
 group :development, :test do

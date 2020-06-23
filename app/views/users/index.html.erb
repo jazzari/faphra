@@ -39,10 +39,16 @@
 				<p class="card-text">
 					<em><%= phrase.body %></em>
 				</p>
-				<p>
-					<%= link_to "Like", '#', class: "btn btn-outline-info btt-like btn-sm" %>
-					<i class="fa fa-heart ml-2"></i> 2
-				</p>
+				<div class="row">
+					<div class="col-1">
+					  <i class="fa fa-heart ml-2"></i> 2
+					</div>
+					<div class="col-4">
+						<%= render 'phrases/likes', phrase: phrase %>
+					</div>
+					<div class="col-auto">
+					</div>
+				</div>
 			  </div>
 			</div>
 			<% if phrase.user.id == current_user.id %>
