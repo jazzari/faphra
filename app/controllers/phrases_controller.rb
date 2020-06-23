@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-	before_action :set_phrase, only: [:edit, :show, :update, :like]
+	before_action :set_phrase, only: [:edit, :show, :update, :destroy, :like]
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index

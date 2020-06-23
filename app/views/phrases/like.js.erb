@@ -1,0 +1,3 @@
+
+$("#like_<%= @phrase.id %>").removeClass("fa-heart-o").addClass("fa-heart");
+$("#likes_<%= @phrase.id %>").html("<%= j (render partial: 'phrases/likes', locals: { phrase: @phrase} ) %>");
