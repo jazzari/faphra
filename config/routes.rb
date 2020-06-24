@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'phrases#index'
 
   resources :phrases do 
+  	resources :comments
   	member do 
   		get 'like'
   		get 'unlike'
