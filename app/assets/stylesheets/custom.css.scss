@@ -29,7 +29,6 @@
 	font-family: FontAwesome;
 	bottom: 3px;
 	font-size: 24px;
-	content: "\f164";
     width: 20px;
     height: 20px;
     display: inline-block;
@@ -38,21 +37,8 @@
     background-color: transparent;
     background-position : center center;
     background-repeat:no-repeat;
+    text-decoration: none;
+    color: crimson;
 }
 
-/* button like icon */
-.btt-follow:before {
-	position: relative;
-	font-family: FontAwesome;
-	bottom: 10px;
-	font-size: 24px;
-	content: "\f234";
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    margin-right: 15px;
-    vertical-align: text-top;
-    background-color: transparent;
-    background-position : center center;
-    background-repeat:no-repeat;
-}
+

@@ -1,3 +1,4 @@
-$("#like_<%= @phrase.id %>").removeClass("fa-heart-o").addClass("fa-heart");
+
+$("#like_<%= @phrase.id %>").removeClass("fa-heart").addClass("fa-heart-o");
 $("#like_<%= @phrase.id %>").removeAttr('href').attr('href', '/phrases/<%= @phrase.id %>/like');
 $("#likes_<%= @phrase.id %>").html("<%= j (render partial: 'phrases/likes', locals: { phrase: @phrase} ) %>");
