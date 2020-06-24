@@ -1,5 +1,6 @@
 class PhrasesController < ApplicationController
-	before_action :set_phrase, only: [:edit, :show, :update, :destroy, :like]
+	before_action :set_phrase, only: [:edit, :show, :update, :destroy,
+	 :like, :unlike]
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
@@ -59,7 +60,7 @@ class PhrasesController < ApplicationController
 	end
 
 	def unlike
-		if @phrase.disliked_by current_user
+		if @phrase.unliked_by current_user
 			respond_to do |format|
 				format.html { redirect_to :back }
 				format.js
