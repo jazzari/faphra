@@ -74,28 +74,9 @@
 			  </div>
 			</div>
 
-			<div class="row">
+			<div id="comments_<%= phrase.id %>">
 			  <% if phrase.comments %>
-			  <% phrase.comments.each do |comment| %>
-				<div class="col">
-					<div class="card-block bg-light rounded-pill pl-3">
-					  <h6 class="card-title">
-			  			<%= comment.user.username %>
-			  		  </h6>
-			  		  <div class="card-text font-weight-lighter">
-			  			<%= comment.content %>
-			  		  </div>
-					</div>
-				</div>
-
-				<div class="col-1">
-					<% if comment.user == current_user %>
-			  		  	<%= link_to "", phrase_comment_path(phrase, comment),
-			  		  	  	method: :delete, data: { confirm: "Are you sure? " },
-			  		  	  	class: "fa fa-close" %>
-			  		 <% end %>
-				</div>
-				<% end %>
+			  	<%= render phrase.comments, phrase: phrase %>
 			  <% end %>
 			</div>
 
@@ -105,7 +86,8 @@
 					<div class="card-block d-flex">	
 					  <div class="col">	
 					  	<%= form_for( [phrase, phrase.comments.new], remote: true) do |f| %>
-							<%= f.text_field :content, class: "form-control form-control-lg", 
+							<%= f.text_field :content, class: "form-control form-control-lg",
+							id: "comment_content_#{phrase.id}",
 			   					placeholder: "Add a comment...", autofocus: true %>
 			   		  </div>
 			   		  <div class="col-1">

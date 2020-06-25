@@ -1,19 +1,23 @@
 class CommentsController < ApplicationController
 	before_action :set_phrase, only: [:edit, :create, :destroy]
+	before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
-	def edit
-		
+
+	def new
+		@comment = @phrase.comment.build
 	end
-
+	
 	def create 
-		@comment = @phrase.comment.build(comment_params)
+		@comment = @phrase.comments.build(comment_params)
 		@comment.user_id = current_user.id
 		if @comment.save
-			flash[:success] = "The comment was created successfully!"
-			redirect_to :back
+			respond_to do |format|
+				format.html { redirect_to root_path }
+				format.js
+			end
 		else
 			flash[:alert] = "The comment failed to be created."
-			redirect_to root_path
+			render root_path
 		end
 	end
 
@@ -32,7 +36,11 @@ class CommentsController < ApplicationController
 	end
 
 	def set_phrase
-		@phrase = Phrase.find(params[:phrase.id])
+		@phrase = Phrase.find(params[:phrase_id])
+	end
+
+	def set_comment
+		@comment=@phrase.comments.find(params[:id])
 	end
 
 end
