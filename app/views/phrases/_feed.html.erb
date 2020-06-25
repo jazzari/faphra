@@ -16,6 +16,7 @@
 
 	<% @phrases.each do |phrase| %>
        <div class="card rounded border-light shadow p-3 mb-4 ">
+
 	  	  <div class="card-block d-flex">
 		  	<p class="image ">
 		  		<%= gravatar_image_tag(phrase.user.email, 
@@ -26,16 +27,17 @@
 	  		  <h5 class="card-title"><%= phrase.user.name %></h5>
 	  		  <h6 class="card-subtitle mb-2 text-muted">
 	  		  	<%= phrase.user.username %>
-	  		  	</h6>
-	  	     </div>
+	  		  </h6>
+	  	    </div>
 	  	  </div>
 
-		  	<div class="row">
-		  	  <div class="col">
-				<p class="card-text">
-					<em><%= phrase.body %></em>
-				</p>
-				 <span class="row border-bottom"></span>
+		  <div class="row">
+		  	<div class="col">
+			  <p class="card-text">
+				<em><%= phrase.body %></em>
+			  </p>
+			  <span class="row border-bottom"></span>
+
 
 				<div class="row">
 					<% if current_user.present? %>
@@ -72,44 +74,53 @@
 			  </div>
 			</div>
 
-
-			<div class="card-block bg-light rounded-pill">
-			  <div class="row">	
-			  <div class="col-6 ml-2">
-			  	<% if phrase.comments %>
-			  		<% phrase.comments.each do |comment| %>
-			  		  <h6 class="card-title">
+			<div class="row">
+			  <% if phrase.comments %>
+			  <% phrase.comments.each do |comment| %>
+				<div class="col">
+					<div class="card-block bg-light rounded-pill pl-3">
+					  <h6 class="card-title">
 			  			<%= comment.user.username %>
 			  		  </h6>
 			  		  <div class="card-text font-weight-lighter">
 			  			<%= comment.content %>
 			  		  </div>
-			  		  <% if comment.user == current_user %>
+					</div>
+				</div>
+
+				<div class="col-1">
+					<% if comment.user == current_user %>
 			  		  	<%= link_to "", phrase_comment_path(phrase, comment),
 			  		  	  	method: :delete, data: { confirm: "Are you sure? " },
 			  		  	  	class: "fa fa-close" %>
-			  		  <% end %>
-			  		<% end %>
-			  	<% end %>
-			  </div>
-			  </div>
-			</div>
-
-
-			<div class="form">
-				<div class="card-block d-flex">	
-				  <div class="col-10">	
-				  	<%= form_for( [phrase, phrase.comments.new], remote: true) do |f| %>
-						<%= f.text_field :content, class: "form-control form-control-lg", 
-		   					placeholder: "Add a comment...", autofocus: true %>
-		   		  </div>
-		   		  <div class="col-auto">
-						<%= f.submit "Submit", class: "btn btn-outline-primary mr-2" %>
-					<% end %>
-				  </div>
+			  		 <% end %>
 				</div>
+				<% end %>
+			  <% end %>
 			</div>
 
-		</div>
+			<dir class="row">
+				<% if user_signed_in? %>
+				   <div class="form">
+					<div class="card-block d-flex">	
+					  <div class="col">	
+					  	<%= form_for( [phrase, phrase.comments.new], remote: true) do |f| %>
+							<%= f.text_field :content, class: "form-control form-control-lg", 
+			   					placeholder: "Add a comment...", autofocus: true %>
+			   		  </div>
+			   		  <div class="col-1">
+							<%= f.submit "Submit", class: "btn btn-outline-primary mr-2" %>
+						<% end %>
+					  </div>
+					</div>
+			      </div>
+				<% end %>
+			</dir>
+			    
+
+
+
+
+		</div> 
 	<% end %>
 </ul>	
