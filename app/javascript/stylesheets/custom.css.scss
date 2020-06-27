@@ -1,0 +1,50 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+
+
+/* NAVBAR */
+
+/* change the background color */
+.navbar {
+    background-color: #399ada;
+}
+
+/* round images */
+.image {
+	border-radius: 50%;
+	img {
+		border-radius: 50%;
+	}
+}
+
+
+/* flash messages */
+.alert {
+	margin-bottom: 0;
+}
+
+/* button like icon */
+.btt-like:before {
+	position: relative;
+	font-family: FontAwesome;
+	bottom: 3px;
+	font-size: 24px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: text-top;
+    background-color: transparent;
+    background-position : center center;
+    background-repeat:no-repeat;
+    text-decoration: none;
+    color: crimson;
+}
+
+/* phrase icons */
+.ph-icon {
+  font-family: FontAwesome;
+  font-size: 24px;
+}
+
+

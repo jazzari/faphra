@@ -10,10 +10,12 @@ module PhrasesHelper
 		unless current_user.blank?
 			if current_user.voted_for? phrase
 				return link_to '', unlike_phrase_path(phrase), remote: true,
-				id: "like_#{phrase.id}", class: 'btn btn-light text-dark btt-like btn fa fa-heart' 
+				id: "like_#{phrase.id}", 
+				class: 'btn btn-light text-dark btt-like btn fa fa-heart' 
 			else 
 				return link_to '', like_phrase_path(phrase), remote: true,
-				id: "like_#{phrase.id}", class: 'btn btn-outline-light text-dark btt-like btn fa fa-heart-o'
+				id: "like_#{phrase.id}", 
+				class: 'btn btn-outline-light text-dark btt-like btn fa fa-heart-o'
 			end				 
 		end
 

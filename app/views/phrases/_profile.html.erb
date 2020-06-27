@@ -21,11 +21,11 @@
     </div>
     <div class="col text-secondary">
       <h6>Following</h6>
-      <p class="text-info">7</p>
+      <p class="text-info"><%= current_user.following.count %></p>
     </div>
     <div class="col text-secondary">
       <h6>Followers</h6>
-      <p class="text-info">24</p>
+      <p class="text-info"><%= current_user.followers.count %></p>
     </div>
   </div>
 </div>
