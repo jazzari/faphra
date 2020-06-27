@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+
+  post ':id/follow_user', to: 'friendships#follow_user', as: :follow_user
+  post ':id/unfollow_user', to: 'friendships#unfollow_user', as: :unfollow_user
  
+
   devise_for :users, :controllers => {:registrations => "registrations"}
   root to: 'phrases#index'
 
@@ -12,5 +16,7 @@ Rails.application.routes.draw do
   end
 
   get '/ownphrases', to: 'users#index'
+
+
 
 end

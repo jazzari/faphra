@@ -16,12 +16,12 @@
 			<small><%= user.username %></small><br />
 
             <% if current_user_is_following(current_user.id, user.id) %>
-              <%= link_to 'Following', unfollow_user_path, remote: true,
-                class: 'btn btn-outline-primary unfollow-button', id: 'unfollow-button', 
+              <%= link_to 'Following', unfollow_user_path(user), remote: true,
+                class: 'btn unfollow-button', id: 'unfollow-button', 
                 method: :post %>
             <% else %>
               <%= link_to 'Follow', follow_user_path(user), remote: true,
-                class: 'btn btn-outline-primary follow-button', id: 'unfollow-button', 
+                class: 'btn follow-button', id: 'unfollow-button', 
                 method: :post %>
             <% end %>
 			
