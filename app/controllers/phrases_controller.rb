@@ -16,7 +16,7 @@ class PhrasesController < ApplicationController
 	end
 
 	def new
-		@phrase = current_user.phrase.build
+		@phrase = current_user.phrases.build
 	end
 
 	def edit
