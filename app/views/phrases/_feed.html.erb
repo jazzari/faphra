@@ -1,19 +1,4 @@
 <ul>
-	<div class="card rounded border-light flex-row flex-wrap shadow p-3 mb-4 ">
-		<% if user_signed_in? %>
-	  	<div class="card-block d-flex">
-		  	<p class="image ">
-		  		<%= gravatar_image_tag(current_user.email, 
-					   size: 64, alt: current_user.name) %>
-		  	</p>
-	    </div>
-	    <div class="col">
-	    	<%= render 'phrases/form' %>
-	    </div>
-	    <% end %>
-	</div>
-	    <p></p>
-
 	<% @phrases.each do |phrase| %>
        <div class="card rounded border-light shadow p-3 mb-4 ">
 
@@ -38,38 +23,6 @@
 			  </p>
 			  <span class="row border-bottom"></span>
 
-				<div class="row">
-					<% if current_user.present? %>
-						<div class="col-1">
-						  <%= liked_phrase phrase %>
-						</div>
-						<div class="col-4 ml-3">
-							<%= render 'phrases/likes', phrase: phrase %>
-						</div>
-						<div class="col-auto">
-						</div>
-					<% end %>
-
-					<div class="col-2"></div>
-
-					<div class="col-auto justify-content-end">
-					<% unless current_user.blank? %>
-						<% if phrase.user.id == current_user.id %>
-						  <div class="col-auto">
-							<%= link_to "", phrase_path(phrase), 
-							class: "fa fa-eye mr-2 ph-icon" %>
-							<%= link_to "", edit_phrase_path(phrase), 
-							class: "fa fa-pencil-square-o mr-2 ph-icon" %>
-							<%= link_to "", phrase_path(phrase), method: :delete, 
-								data: { confirm: "Are you sure?" }, 
-								class: "fa fa-trash ph-icon" %>
-						  </div>
-						<% end %>
-					<% end %>
-				</div>
-
-				</div>
-				<span class="row border-bottom"></span>
 			  </div>
 			</div>
 
@@ -78,25 +31,6 @@
 			  	<%= render phrase.comments, phrase: phrase %>
 			  <% end %>
 			</div>
-
-			<dir class="row">
-				<% if user_signed_in? %>
-				   <div class="form">
-					<div class="card-block d-flex">	
-					  <div class="col">	
-					  	<%= form_for( [phrase, phrase.comments.new], remote: true) do |f| %>
-							<%= f.text_field :content, class: "form-control form-control-lg",
-							id: "comment_content_#{phrase.id}",
-			   					placeholder: "Add a comment...", autofocus: true %>
-			   		  </div>
-			   		  <div class="col-1">
-							<%= f.submit "Submit", class: "btn btn-outline-primary mr-2" %>
-						<% end %>
-					  </div>
-					</div>
-			      </div>
-				<% end %>
-			</dir>
 			    
 		</div> 
 	<% end %>

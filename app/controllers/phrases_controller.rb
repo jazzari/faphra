@@ -8,7 +8,12 @@ class PhrasesController < ApplicationController
 		@users = User.all
 		unless current_user.blank?
 			@ownphrases = Phrase.recent.where(:user_id => current_user.id)
+			@followedphrases = Phrase.of_followed_users(current_user.following).
+				recent
+			@feedphrases = (@followedphrases + @ownphrases).sort_by(&:created_at).
+				reverse
 		end
+
 	end
 
 	def show
@@ -45,7 +50,7 @@ class PhrasesController < ApplicationController
 
 	def destroy
 		@phrase.destroy
-		flash[:notice] = "Faphra was deleted successfully"
+		flash[:success] = "Faphra was deleted successfully"
 
 		redirect_to phrases_path
 	end
