@@ -1,0 +1,29 @@
+<%= render 'shared/page_title', title: "users following" %>
+
+<div class="container">
+  <ul>
+
+	<% current_user.following.each do |user| %>
+	    <div class="card-block w-50 d-flex mx-auto justify-content-between">
+			<div class="row">
+
+		  	<p class="image">
+		  		<%= gravatar_image_tag(user.email, 
+						  size: 64, alt: user.name) %>
+		  	</p>
+	      <div class="col">
+	        <p></p>
+	        <h5 class="card-title"><%= user.name %></h5>
+	        <h6 class="card-subtitle mb-2 text-muted"><%= user.username %></h6>
+	      </div>
+	    </div>
+	    <div class="col-2">
+	    <%= link_to 'Following', unfollow_user_path(user), remote: true,
+	        class: 'btn unfollow-button btn-outline-primary', id: 'follow-button', 
+	        method: :post %>
+	    </div>
+	   	</div>
+    <% end %>
+
+  </ul>
+</div>

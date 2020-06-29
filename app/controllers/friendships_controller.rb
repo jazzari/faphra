@@ -1,8 +1,7 @@
 class FriendshipsController < ApplicationController
+  before_action :set_user, only: [:follow_user, :unfollow_user]
 	
   def follow_user
-    @user = User.find_by! id: params[:id]
-    
     if current_user.follow @user.id
       respond_to do |format|
         format.html { redirect_to root_path }
@@ -12,8 +11,6 @@ class FriendshipsController < ApplicationController
   end
   
   def unfollow_user
-    @user = User.find_by! id: params[:id]
-    
     if current_user.unfollow @user.id
       respond_to do |format|
         format.html { redirect_to root_path }
@@ -21,4 +18,22 @@ class FriendshipsController < ApplicationController
       end
     end
   end
+
+def follower
+  id = current_user.followers.pluck(:id)
+  @follower = User.find_by(id: id)
+end
+
+def following
+  id = current_user.following.pluck(:id)
+  @following = User.find_by(id: id)
+end
+  
+
+  private
+
+    def set_user
+          @user = User.find_by! id: params[:id]
+    end
+
 end

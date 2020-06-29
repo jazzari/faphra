@@ -21,11 +21,13 @@
     </div>
     <div class="col text-secondary">
       <h6>Following</h6>
-      <p class="text-info"><%= current_user.following.count %></p>
+      <p class="text-info"><%= link_to current_user.following.count, 
+        friendships_following_path, class: "text-info" %></p>
     </div>
     <div class="col text-secondary">
       <h6>Followers</h6>
-      <p class="text-info"><%= current_user.followers.count %></p>
+      <p class="text-info"><%= link_to current_user.followers.count, 
+        friendships_followers_path, class: "text-info" %></p>
     </div>
   </div>
 </div>

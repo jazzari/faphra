@@ -23,6 +23,4 @@ class User < ApplicationRecord
     following_relationships.find_by(following_id: user_id).destroy
   end
 
-
-
 end

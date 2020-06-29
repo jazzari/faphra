@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   end
 
   get '/ownphrases', to: 'users#index'
-
+  get 'friendships/following', to: 'friendships#following'
+  get 'friendships/followers', to: 'friendships#follower'
 
 
 end
