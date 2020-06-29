@@ -1,0 +1,39 @@
+<h2 class="text-center"><%= @user.name %>'s Phrases</h2>
+
+<div class="container w-75">
+
+	<% @user.phrases.each do |phrase| %>
+
+	<div class="card rounded border-light shadow p-3 mb-4 ">
+	  <div class="card-block d-flex ">
+	  	<p class="image ">
+	  		<%= gravatar_image_tag(phrase.user.email, 
+			  :gravatar => { :size => 40 }, alt: phrase.user.name) %>
+	  	</p>
+
+	    <div class="col">
+			  <h5 class="card-title"><%= phrase.user.name %></h5>
+			  <h6 class="card-subtitle mb-2 text-muted">
+			  	<%= phrase.user.username %>
+			  	</h6>
+		     </div>
+		  </div>
+
+	  	<div class="row">
+	  	  <div class="col">
+			<p class="card-text">
+				<em><%= phrase.body %></em>
+			</p>
+
+		<div id="comments_<%= phrase.id %>">
+		  <% if phrase.comments %>
+		  	<%= render phrase.comments, phrase: phrase %>
+		  <% end %>
+		</div>
+		</div>
+
+	  </div>
+	</div>
+
+	<% end %>
+</div>

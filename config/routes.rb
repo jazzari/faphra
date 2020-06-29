@@ -5,6 +5,7 @@ Rails.application.routes.draw do
  
 
   devise_for :users, :controllers => {:registrations => "registrations"}
+  resources :users, only: [:show]
   root to: 'phrases#index'
 
   resources :phrases do 
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   end
 
   get '/ownphrases', to: 'users#index'
+
+  
   get 'friendships/following', to: 'friendships#following'
   get 'friendships/followers', to: 'friendships#follower'
 

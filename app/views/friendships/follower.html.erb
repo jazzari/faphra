@@ -14,7 +14,7 @@
 	      <div class="col">
 	        <p></p>
 	        <h5 class="card-title"><%= user.name %></h5>
-	        <h6 class="card-subtitle mb-2 text-muted"><%= user.username %></h6>
+	        <h6 class="card-subtitle mb-2 text-muted"><%= link_to user.username, user_path(user) %></h6>
 	      </div>
 	    </div>
 	    <div class="col-2">
