@@ -4,12 +4,12 @@ class PhrasesController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 
 	def index
-		@phrases = Phrase.recent.all 
+		@phrases = Phrase.recent.all.page params[:page]
 		@users = User.all
 		unless current_user.blank?
-			@ownphrases = Phrase.recent.where(:user_id => current_user.id)
+			@ownphrases = Phrase.recent.where(:user_id => current_user.id).page params[:page]
 			@followedphrases = Phrase.of_followed_users(current_user.following).
-				recent
+				recent.page params[:page]
 			@feedphrases = (@followedphrases + @ownphrases).sort_by(&:created_at).
 				reverse
 		end

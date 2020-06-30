@@ -20,6 +20,13 @@
 		<%= render 'friendships/who_to_follow' %>
 	  </div>
 	</div>
+
+	<nav aria-label="Page navigation example">
+	<div class="container pagination justify-content-center" >
+  		<%= paginate @phrases %>
+	</div>
+	</nav>
+
 <% else %>
 	<div class="row">
 	  <div class="col-sm-8">	
@@ -30,5 +37,12 @@
 		<%= render 'trends' %>
 	  </div>
 	</div>
+
+	<nav aria-label="Page navigation example">
+	<div class="container pagination justify-content-center" >
+  		<%= paginate @phrases %>
+	</div>
+	</nav>
+
 <% end %>
 </div>

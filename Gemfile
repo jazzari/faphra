@@ -43,6 +43,7 @@ gem 'devise', '~> 4.7', '>= 4.7.2'
 gem 'acts_as_votable', '~> 0.12.1'
 
 gem 'haml', '~> 5.1', '>= 5.1.2'
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
 
 
 
