@@ -45,6 +45,9 @@ gem 'acts_as_votable', '~> 0.12.1'
 gem 'haml', '~> 5.1', '>= 5.1.2'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 
+# for tagging
+gem 'acts-as-taggable-on', '~> 6.5'
+
 
 
 group :development, :test do

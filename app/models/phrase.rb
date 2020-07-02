@@ -1,5 +1,6 @@
 class Phrase < ApplicationRecord
 	acts_as_votable
+	acts_as_taggable_on :topics
 
 	validates :body, presence: true
 	validates :user_id, presence: true

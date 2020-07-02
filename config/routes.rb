@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   get '/ownphrases', to: 'users#index'
-
+  get '/tagged', to: "phrases#tagged", as: :tagged
 
   
   get 'friendships/following', to: 'friendships#following'

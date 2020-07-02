@@ -6,6 +6,13 @@
    		 <%= f.text_area :body, class: "form-control",
    		 placeholder: "Add your new favorite phrase...", autofocus: true %><br />
     </div>
+    <div>
+    	<%= f.label :topic_list, "Topic" %>
+		<%= 
+		  f.text_field :topic_list, 
+		  placeholder: 'Topic of faphra...'
+		%>
+    </div>
 
     <%= f.submit "Create faphra", class: "btn ml-1 btn-primary btn-lg btn-xlarge" %>
 

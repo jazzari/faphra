@@ -13,6 +13,8 @@ class PhrasesController < ApplicationController
 			@feedphrases = (@followedphrases + @ownphrases).sort_by(&:created_at).
 				reverse
 		end
+		@topics = ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'topics').
+			map { |tagging| { 'name' => tagging.tag.name } }.pluck("name").uniq
 
 	end
 
@@ -73,6 +75,14 @@ class PhrasesController < ApplicationController
 		end
 	end
 
+	def tagged
+	  if params[:topic].present?
+	    @phrases = Phrase.tagged_with(params[:topic])
+	  else
+	    @phrases = Phrase.all
+	  end
+	end
+
 
 
 	private
@@ -82,7 +92,7 @@ class PhrasesController < ApplicationController
 	  end
 
 	  def phrase_params
-	  	params.require(:phrase).permit(:id, :body)
+	  	params.require(:phrase).permit(:id, :body, :topic_list)
 	  end
 
 end

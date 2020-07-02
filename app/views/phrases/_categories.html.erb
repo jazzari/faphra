@@ -1,0 +1,17 @@
+<div class="card rounded border-light shadow p-3 mb-5">	
+	<h5 class="card-header text-center">Topics</h5>
+	<p></p>
+  
+	<ul class="list-group list-group-flush">
+
+			<div class="topic">
+			  <% @topics.each do |t| %>
+			  	<p>
+			    <%= link_to t, tagged_path(topic: t) %>
+				</p>
+			  <% end %>
+			</div>
+
+	</ul>
+ 
+</div>
