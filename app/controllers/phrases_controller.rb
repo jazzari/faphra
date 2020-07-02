@@ -15,6 +15,7 @@ class PhrasesController < ApplicationController
 		end
 		@topics = ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'topics').
 			map { |tagging| { 'name' => tagging.tag.name } }.pluck("name").uniq
+		@most_used_topics = ActsAsTaggableOn::Tag.most_used(4).map(&:name)
 
 	end
 

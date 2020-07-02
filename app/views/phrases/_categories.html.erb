@@ -5,7 +5,7 @@
 	<ul class="list-group list-group-flush">
 		
 			<div class="topic">
-			  <% @topics.each do |t| %>
+			  <% @most_used_topics.each do |t| %>
 			  <li class="list-group-item mb-2 pb-0">
 			  	<h5 class="text-center">
 			    <%= link_to t.upcase, tagged_path(topic: t), class: "text-decoration-none" %>
