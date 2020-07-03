@@ -5,6 +5,7 @@ class Phrase < ApplicationRecord
 	validates :body, presence: true
 	validates :user_id, presence: true
 
+
 	scope :recent, -> { order(created_at: :desc) }
 	scope :of_followed_users, -> (following_users) { where user_id: following_users}
 

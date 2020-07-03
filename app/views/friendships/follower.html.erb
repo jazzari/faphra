@@ -18,9 +18,15 @@
 	      </div>
 	    </div>
 	    <div class="col-2">
-	    <%= link_to 'Follow', follow_user_path(user), remote: true,
-	        class: 'btn follow-button btn-outline-primary', id: 'unfollow-button', 
-	        method: :post %>
+            <% if current_user_is_following(current_user.id, user.id) %>
+              <%= link_to 'Following', unfollow_user_path(user), remote: true,
+                class: 'btn unfollow-button btn-outline-primary', id: 'follow-button', 
+                method: :post %>
+            <% else %>
+              <%= link_to 'Follow', follow_user_path(user), remote: true,
+                class: 'btn follow-button btn-outline-primary', id: 'unfollow-button', 
+                method: :post %>
+            <% end %>
 	    </div>
 	   	</div>
     <% end %>

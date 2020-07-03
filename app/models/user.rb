@@ -2,6 +2,10 @@ class User < ApplicationRecord
 	acts_as_voter
 
 	validates :username, presence: true, length: { minimum: 4, maximum: 12 }
+  validates :email, presence: true
+  validates :email, uniqueness: true
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, 
+    message: "valid email please"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -22,5 +26,7 @@ class User < ApplicationRecord
   def unfollow(user_id)
     following_relationships.find_by(following_id: user_id).destroy
   end
+
+
 
 end
