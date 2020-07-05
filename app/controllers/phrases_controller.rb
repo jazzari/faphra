@@ -11,20 +11,15 @@ class PhrasesController < ApplicationController
 			@followedphrases = Phrase.of_followed_users(current_user.following).
 				recent.page params[:page]
 
-			if params[:search]
-				params[:topic] = 'music'
-				redirect_to action: 'tagged' 
-				#@phrases = Phrase.tagged_with(params[:search]).order("created_at DESC")
-				#redirect_to controller: 'phrases', action: 'tagged', topic: params[:search]
-				
-			else
-				@feedphrases = (@followedphrases + @ownphrases).sort_by(&:created_at).
+			@feedphrases = (@followedphrases + @ownphrases).sort_by(&:created_at).
 				reverse
-			end
+
 		end
+		
+		# Find phrase's topics
 		@topics = ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'topics').
 			map { |tagging| { 'name' => tagging.tag.name } }.pluck("name").uniq
-		@most_used_topics = ActsAsTaggableOn::Tag.most_used(4).map(&:name)
+		@most_used_topics = ActsAsTaggableOn::Tag.most_used(5).map(&:name)
 	end
 
 	def show
