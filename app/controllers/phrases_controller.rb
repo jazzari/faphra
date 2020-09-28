@@ -28,6 +28,7 @@ class PhrasesController < ApplicationController
 
 	def new
 		@phrase = current_user.phrases.build
+
 	end
 
 	def edit
@@ -36,7 +37,7 @@ class PhrasesController < ApplicationController
 
 	def create
 		@phrase = current_user.phrases.build(phrase_params)
-
+		logger.debug "@phrase is: #{@phrase.inspect}"
 		if @phrase.save
 			flash[:notice] = "Faphra was successfully created"
 			redirect_to root_path

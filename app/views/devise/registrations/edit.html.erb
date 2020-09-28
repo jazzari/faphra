@@ -1,6 +1,7 @@
 <%= render 'shared/page_title', title: "edit user" %>
 
 <%= form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f| %>
+  
     <div class="form-group">
         <div class="control-label col-md-2 offset-md-4">
           <%= f.label :name %><br />

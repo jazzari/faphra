@@ -1,6 +1,7 @@
 
 <%= form_for(Phrase.new, :url => { :controller => "phrases", :action => "create" }) do |f| %>
 
+
     <h5 class="card-title">Today's Favorite Phrase</h5>
     <div class="col-md-12">
    		 <%= f.text_area :body, class: "form-control",
